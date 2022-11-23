@@ -1,0 +1,232 @@
+// Navbar
+.nav {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height:102px;
+    padding: 22px 4vw;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transform: translate(0,0);
+
+    // Nav container
+    &__container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    // Nav title
+    &__text {
+        text-transform: uppercase;
+        font-family: var(--font-header);
+        letter-spacing: 0px;
+        font-size: 35px;
+
+        @media screen and (min-width:1450px) {
+            font-size: 50px;
+        }
+
+        @media screen and (min-width:2000px) {
+            font-size: 2.6vw;
+        }  
+    }
+
+    // Nav title
+    &__title {
+        transition: var(--quick-color-transition)
+    }
+
+    // Nav CTA
+    &__cta {
+        @media screen and (max-width:700px) {
+            display: none;
+        }
+
+        a {
+            transition: var(--medium-color-transition);
+        }
+    }
+
+    // Nav alt mode toggler
+    &__mode {
+        position: relative;
+        width:20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color:var(--black-color);
+        box-shadow: 0 0 3px var(--black-color), 0 0 6px grey;
+        cursor: pointer;
+        transition: background-color .30s ease .30s!important;
+
+        @media screen and (min-width:1450px) {
+            width:30px;
+            height:30px;
+        }
+
+        @media screen and (min-width:2000px) {
+            width:1.6vw;
+            height:1.6vw;
+        } 
+
+        &:after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--black-color), 0 0 30px grey;
+            opacity: 0;
+            transition: opacity .35s ease;
+        }
+
+        &:hover:after {
+            opacity: 1;
+        }
+    }
+
+    // Nav location text
+    &__location {
+        position: absolute;
+        top: 45px;
+        color: var(--dark-grey);
+
+        @media screen and (min-width:1450px) {
+            top: 62px;
+        }
+
+        @media screen and (min-width:2000px) {
+            top: 3.3vw;
+            font-size: .8vw;
+        }
+    }
+
+    // Burger button
+    &__toggle-btn {
+        position: relative;
+        background: 0 0;
+        border: 0;
+     
+        // Closed Burger lines
+        span {
+            position: relative;
+            top:0;
+            display: block;
+            width:24px;
+            height:2.5px;
+            border-radius: 25px;
+            transition: top .15s ease-out .15s, transform .15s ease-out 0s, background-color .30s ease .35s;
+
+            @media screen and (min-width:1450px) {
+                width:36px;
+                height:2.8px;
+            } 
+
+            @media screen and (min-width:2000px) {
+                width: 45px;
+                height: 3.2px;
+            } 
+
+            &:first-child {
+                margin: 0 0 4px 0;
+
+                @media screen and (min-width:1450px) {
+                    margin: 0 0 6px 0;
+                } 
+            }
+
+            &:last-child {
+                margin: 4px 0 0 0;
+
+                @media screen and (min-width:1450px) {
+                    margin: 6px 0 0 0;
+                } 
+            }
+        }
+    }
+
+    // Opened Burger lines
+    .open span {
+        width:26px;
+        transition: top .15s ease-out, transform .15s ease-out .15s;
+
+        @media screen and (min-width:1450px) {
+            width:36px;
+            height:2.8px;
+        }
+
+        @media screen and (min-width:2000px) {
+            width: 45px;
+            height: 3.2px;
+        }  
+
+        &:first-child {
+            top: 6.5px;
+            transform: rotate(45deg);
+
+            @media screen and (min-width:1450px) {
+                top: 10.5px;
+            }
+        }
+
+        &:last-child {
+            top:-6.5px;
+            transform: rotate(-45deg);
+
+            @media screen and (min-width:1450px) {
+                top: -7.5px;
+            } 
+        }
+
+        &:nth-child(2) {
+            opacity: 0;
+        }
+    }
+
+    // Opened menu
+    &__menu {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        @media screen and (min-height:1000px) {
+            li:not(:last-child) {
+                margin-bottom: 1vh;
+            }
+        }
+
+        .links {
+            font-size: clamp(2.5rem, 4.6vw, 4.5rem);
+            font-family: var(--font-header);
+            text-transform: uppercase;
+            
+            @media screen and (max-width:370px) {
+                font-size:2rem;
+            }
+
+            @media(hover:hover) {
+                transform: translateX(16px);
+            }
+
+            &:before {
+                background-color: var(--light-grey);
+            }
+
+            a {
+                color: var(--light-grey);
+            }
+        }
+    }
+}
+
+// Class to hide nav on scrolling down
+.hide-nav {
+    transform: translate(0, -100%);
+}
+

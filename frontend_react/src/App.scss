@@ -1,0 +1,267 @@
+// App styling
+.App {
+    background-color: var(--light-grey);
+    color: var(--dark-color);
+    font-family: var(--font-text);
+    white-space: pre-line;
+}
+
+// Alternative mode app styling
+.App.alt-mode {
+    color: var(--white-color);
+
+    // Alt mode nav toggler
+    .nav__mode {
+        background-color: var(--white-color);
+        box-shadow: 0 0 3px var(--white-color), 0 0 6px grey;
+
+        &:after {
+            box-shadow: 0 0 20px var(--white-color), 0 0 30px grey;
+        }
+    }
+
+    // Alt mode links
+    .links {
+        a {
+            color: var(--white-color);
+        }
+
+        &:before {
+            background-color: var(--white-color);
+        }
+
+        div {
+            color: var(--white-color);
+        }
+    }
+
+    // Alt mode nav opened menu links
+    .nav__menu {
+        .links {
+            &:before {
+                background-color: var(--dark-color);
+            }
+
+            a {
+                color: var(--dark-color);
+            }
+        }
+    }
+
+    // Alt mode crendetials hr color
+    .credentials hr {
+        border: 0.1px solid var(--white-color);
+    }
+
+    // Alt mode footer section color
+    .footer {
+        color: var(--dark-color);
+
+        a {
+            color: var(--dark-color);
+        }
+
+        &__cta--link:before, &__social--item:before {
+            background-color: var(--dark-color);
+        }
+    }
+}
+
+// Flex alt background div
+.flex-background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+
+    &__line {
+        width: 5vw;
+        height: 100%;
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        background-color: var(--dark-color);
+
+        transform: scaleX(0);
+        -webkit-transition: transform 300ms ease-out;
+        transition: transform 300ms ease-out;
+        transform-origin: 0% 50%;
+        will-change: transform;
+    }
+
+    // Classes to be added when dark mode is enabled
+    .line-transform {
+        transform-origin: 100% 50%;
+    }
+    .line-open {
+        transform: scaleX(1.04);
+
+        @media screen and (max-width:550px) {
+            transform: scaleX(1.07);
+        }
+    }
+}
+
+// Scroll progress/Back to top component 
+.progress {
+    position: fixed;
+    bottom:4.5vw;
+    right:4.5vw;
+    z-index: 1000;
+
+    @media screen and (max-width:625px) {
+        bottom:7vw;
+        right:7vw;
+    }
+
+    #progress {
+        position: absolute;
+        top: 50%; 
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-90deg);
+        width: 40px;
+        height: 40px;
+
+        @media screen and (min-width:1300px) {
+            width: 5vw;
+            height: 5vw;
+        }
+    }
+      
+    circle {
+        stroke-dashoffset: 0;
+        stroke-width: 15%;
+        fill: none;
+    }
+
+    &__btt-icon {
+        position: absolute;
+        top: 50%; 
+        left: 50%;
+        transform: translate(-50%, -50%);
+        stroke-width: 1;
+        background: var(--dark-grey);
+        border-radius: 50%;
+        padding: 2px;
+        cursor: pointer;
+        transition: opacity .3s;
+
+        @media screen and (min-width:1300px) {
+            font-size: 1.5vw;
+        }
+    }
+    
+    .bg {
+        stroke: var(--dark-grey);
+        opacity: 0.3;
+    }
+    
+    #progress .indicator {
+        stroke: var(--dark-grey);
+    }
+}
+
+// Sections with a layered bottom pinning effect
+.layered-bottom {
+    width: 100%;
+    height: 100%; 
+    overflow: hidden;
+    height: 100vh;
+
+    &__panel {
+        position: absolute;
+        will-change: transform;
+    }
+}
+
+// Loader component
+.loader {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    height: 100vh;
+    width: 100%;
+    background-color: var(--dark-color);
+    color: var(--white-color);
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap:10px;
+        overflow: hidden;
+        font-size: 6vw;
+        text-transform: uppercase;
+        font-family: var(--font-header);
+        letter-spacing: 0px;
+        line-height: .9;
+
+        @media screen and (max-width:600px) {
+            font-size: 9vw;
+        }
+    }
+}
+
+.loader.alt-mode {
+    background-color: var(--light-grey);
+    color: var(--dark-color);
+}
+
+// 404 component
+.not-found {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    font-family: var(--font-header);
+
+    &__text {
+        font-size: 12vw;
+        font-weight: 400;
+
+        @media screen and (max-width:625px) {
+            font-size: 16vw;
+        }
+    }
+
+    &__cta {
+        font-size: 8vw;
+        font-weight: 400;
+
+        @media screen and (max-width:625px) {
+            font-size: 12vw;
+        }
+
+        svg {
+            opacity: 1;
+            margin-left: 4px;
+            font-size: 6vw;
+
+            @media screen and (max-width:625px) {
+                font-size: 10vw;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

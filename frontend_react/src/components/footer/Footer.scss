@@ -1,0 +1,105 @@
+// Footer component
+.footer {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(15, 20, 30, .4);
+    color: var(--white-color);
+    transform: translateY(10vh);
+    font-family: var(--font-header);
+    text-transform: uppercase;
+
+    a {
+        color:var(--white-color);
+    }
+
+    // CTA
+    &__cta {
+        position: absolute;
+        top: 50%; 
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: max-content;
+        line-height: 1;
+
+        &--q {
+            text-align: center;
+            font-size: clamp(.5rem, 1.3vw, 2.2rem);
+            text-transform: initial;
+            overflow: hidden;
+            line-height: 1.2;
+            font-family: var(--font-text);
+            transition: var(--medium-color-transition);
+        }
+
+        &--link {
+            display: flex;
+            align-items: center;
+            font-size: 12vw;
+            font-weight: 400;
+            padding-bottom: 1px;
+
+            @media screen and (max-width:625px) {
+                font-size: 16vw;
+            }
+
+            a {
+                transition: var(--medium-color-transition);
+            }
+
+            svg {
+                opacity: 1;
+                margin-left: 6px;
+                font-size: 10vw;
+
+                @media screen and (max-width:625px) {
+                    font-size: 14vw;
+                }
+            }
+    
+            &::before {
+                background-color: var(--white-color);
+            }
+        }
+    }
+
+    // Social links
+    &__social {
+        position: absolute;
+        bottom:3vw;
+        left:3vw;
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        letter-spacing: 0px;
+        font-size: 35px;
+
+        @media screen and (max-width:625px) {
+            bottom:5vw;
+            left:5vw;
+        }
+
+        @media screen and (min-width:1450px) {
+            font-size: 50px;
+        }
+
+        @media screen and (min-width:2000px) {
+            font-size: 2.6vw;
+        }  
+
+        &--item {
+            margin-right: 6px;
+            transition: var(--quick-color-transition);
+            
+            &:before {
+                background-color: var(--white-color);
+            }
+        }
+    }
+
+    // Footer alt background
+    .flex-background {
+        &__line {
+            background-color: rgba(225, 223, 221, .4);
+        }
+    }
+}

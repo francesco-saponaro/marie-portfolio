@@ -1,0 +1,119 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300;400;500;600;700&family=Six+Caps&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+// Root colors
+:root {
+  --font-header: 'Six Caps', sans-serif;
+  --font-text: 'Josefin Slab', serif;
+  --white-color: #ffffff;
+  --black-color: #000;
+  --dark-color:#0f141e;
+  --light-grey: #e1dfdd;
+  --grey: #343a40;
+  --dark-grey: #888;
+  --darker-grey: #58545B;
+  --light-blue: #8da399;
+  --light-pink: #e7c7ac;
+  --mustard-yellow: #AB7D00;
+  --hero-ease: 0.165, 0.84, 0.44, 1;
+  --quick-color-transition: color .30s ease;
+  --slow-color-transition: color .30s ease .35s;
+  --medium-color-transition: color .30s ease .15s;
+}
+
+// Custom scroll bar styles
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: 0 0;
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 0 10px; // This inset shadow covers the whole thumb radius
+}                               // It'll turn blue when blue color class attached to the body
+
+body {
+  overflow-y: overlay;
+  overflow-x: hidden;
+  background-color: #e1dfdd;
+  color: rgba(0, 0, 0, 0);
+  transition: color 0.5s 0.3s ease-out;
+}
+
+.show-scrollbar {                     // This class goes on the body whenever the user scrolls.
+  color: #888;     // It will only cause the scrollbar-thumb box-shadow to turn blue 
+}                                   // since the App container has other styling
+
+.no-scroll {
+  height: 100%;
+  overflow-y: hidden;
+}
+
+// General styles
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color:var(--black-color);
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+// Links, links hover and links svg styles
+.links {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: .5px;
+  cursor: pointer;
+  width: fit-content;
+
+  &:before {
+      content:"";
+      position: absolute;
+      bottom:0;
+      left:-1px;
+      width: 100%;
+      height:2px;
+      background-color: var(--black-color);
+      transform: translateX(-100%);
+      transition: transform .2s ease;
+  }
+
+  &:hover:before {
+      transform: translateX(0);
+  }
+
+  &:hover svg {
+    opacity: 1;
+  }
+
+  a {
+      display: inline-block;
+      color: var(--black-color);
+  }
+
+  svg {
+      transform: translateY(2.5px);
+      transition: opacity .3s ease;
+
+      // Hover devices media query
+      @media(hover:hover) {
+        opacity: 0;
+      }
+  }
+}
+
