@@ -257,17 +257,24 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1vw;
+            margin-bottom: 1vw;
 
             @media screen and (max-width:740px) {
-                gap: 20px;
+                margin-bottom: 20px;
+            }
+
+            &__title, &__text {
+                margin-bottom: 1vw;
+
+                @media screen and (max-width:740px) {
+                    margin-bottom: 20px;
+                }
             }
         }
 
         // Blocks image
         .image {
             width: 100%;
-            margin-top: 20px;
 
             img {
                 width: 100%;
