@@ -309,8 +309,14 @@
 
         @media screen and (max-width:740px) {
             flex-direction: column;
-            gap: 14px;
             padding: 35px 4vw;
+            gap:0;
+        }
+
+        div:not(:last-child) {
+            @media screen and (max-width:740px) {
+                margin-bottom: 20px;
+            }
         }
 
         .image-left, .image-right {
@@ -319,10 +325,6 @@
             .img {
                 margin-bottom: 8px;
                 width: 100%;
-
-                @media screen and (max-width:740px) {
-                    margin-bottom: 20px;
-                }
 
                 img {
                     width: 100%;
