@@ -260,13 +260,14 @@
             gap: 1vw;
 
             @media screen and (max-width:740px) {
-                gap: 14px;
+                gap: 20px;
             }
         }
 
         // Blocks image
         .image {
             width: 100%;
+            margin-top: 20px;
 
             img {
                 width: 100%;
