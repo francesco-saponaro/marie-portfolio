@@ -168,6 +168,12 @@
     }
 }
 
+.no-scroll {
+    .progress {
+        display: none;
+    }
+}
+
 // Sections with a layered bottom pinning effect
 .layered-bottom {
     width: 100%;

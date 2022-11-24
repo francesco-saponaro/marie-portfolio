@@ -32,41 +32,45 @@ const Credentials = ({ altMode, pinnedRef, credentialsSection, credData, loading
       })
       gsap.set(credentialsSection.current, {zIndex: (i, target, targets) => targets.length - i});
 
-      // Section text translate and opacity animations, scroll direction dependent
-      gsap.utils.toArray(".reveal-text").forEach((elem) => {
-        gsap.set(elem, {autoAlpha: 0}); // assure that the element is hidden when scrolled into view
-        
-        ScrollTrigger.create({
-          trigger: elem,
-          onEnter: () => gsapAnimateFrom(elem, 1), 
-          onEnterBack: () => gsapAnimateFrom(elem, -1),
-          onLeave: () => gsap.set(elem, {autoAlpha: 0}) // assure that the element is hidden when scrolled out of view
+      // Apply these Gsap animations after a second, as if doing it on component mount
+      // the function associated to these animations doesnt run on time on all .animation-container elements 
+      setTimeout(() => {
+        // Section text translate and opacity animations, scroll direction dependent
+        gsap.utils.toArray(".reveal-text").forEach((elem) => {
+          gsap.set(elem, {autoAlpha: 0}); // assure that the element is hidden when scrolled into view
+          
+          ScrollTrigger.create({
+            trigger: elem,
+            onEnter: () => gsapAnimateFrom(elem, 1), 
+            onEnterBack: () => gsapAnimateFrom(elem, -1),
+            onLeave: () => gsap.set(elem, {autoAlpha: 0}) // assure that the element is hidden when scrolled out of view
+          });
         });
-      });
 
-      gsap.utils.toArray(".reveal-header").forEach((elem) => {
-        gsap.set(elem, {autoAlpha: 0}); // assure that the element is hidden when scrolled into view
-        
-        ScrollTrigger.create({
-          trigger: elem,
-          onEnter: () => gsapAnimateFrom(elem, 1, .5), 
-          onEnterBack: () => gsapAnimateFrom(elem, -1, .5),
-          onLeave: () => gsap.set(elem, {autoAlpha: 0}) // assure that the element is hidden when scrolled out of view
+        gsap.utils.toArray(".reveal-header").forEach((elem) => {
+          gsap.set(elem, {autoAlpha: 0}); // assure that the element is hidden when scrolled into view
+          
+          ScrollTrigger.create({
+            trigger: elem,
+            onEnter: () => gsapAnimateFrom(elem, 1, .5), 
+            onEnterBack: () => gsapAnimateFrom(elem, -1, .5),
+            onLeave: () => gsap.set(elem, {autoAlpha: 0}) // assure that the element is hidden when scrolled out of view
+          });
         });
-      });
 
-      // Hr scale
-      gsap.fromTo('.credentials__hr', { 
-        scale: 0
-        }, { 
-        scale: 1,
-        ease: "power2", 
-        duration: 1,
-        scrollTrigger: {
-          trigger: '.credentials__hr',
-          toggleActions: 'play reset play reset'
-        }
-      });
+        // Hr scale
+        gsap.fromTo('.credentials__hr', { 
+          scale: 0
+          }, { 
+          scale: 1,
+          ease: "power2", 
+          duration: 1,
+          scrollTrigger: {
+            trigger: '.credentials__hr',
+            toggleActions: 'play reset play reset'
+          }
+        });
+      },1000)
     }, credentialsSection)
 
     // Recalculates the positioning of the ScrollTrigger on the page

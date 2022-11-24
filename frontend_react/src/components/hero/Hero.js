@@ -73,16 +73,20 @@ const Hero = ({ worksSection, heroData, loading }) => {
       secondHeaders.to(".split-text-hero-header-second.first", { delay: .1 })
       secondHeaders.to(".split-text-hero-header-second.second", {}, "<");
 
-      // Hero text opacity and translateY - scroll direction dependent
-      gsap.utils.toArray(".hero__about--text").forEach((elem) => {
-        gsap.set(elem, { autoAlpha: 0 }); // assure that the element is hidden when scrolled into view
-        ScrollTrigger.create({
-          trigger: elem,
-          onEnter: () => gsapAnimateFrom(elem, 1), 
-          onEnterBack: () => gsapAnimateFrom(elem, -1),
-          onLeave: () => gsap.set(elem, {autoAlpha: 0}) // assure that the element is hidden when scrolled out of view
-        })
-      });
+      // Apply these Gsap animations after a millisecond, as if doing it on component mount
+      // the function associated to these animations doesnt run on time on all .animation-container elements 
+      setTimeout(() => {
+        // Hero text opacity and translateY - scroll direction dependent
+        gsap.utils.toArray(".hero__about--text").forEach((elem) => {
+          gsap.set(elem, { autoAlpha: 0 }); // assure that the element is hidden when scrolled into view
+          ScrollTrigger.create({
+            trigger: elem,
+            onEnter: () => gsapAnimateFrom(elem, 1), 
+            onEnterBack: () => gsapAnimateFrom(elem, -1),
+            onLeave: () => gsap.set(elem, {autoAlpha: 0}) // assure that the element is hidden when scrolled out of view
+          })
+        });
+      },100)
 
       // Hero CTA opacity and translateX
       gsap.set([".hero__cta--first", ".hero__cta--second"], { autoAlpha: 0 });
