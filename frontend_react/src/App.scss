@@ -197,7 +197,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap:20px;
         overflow: hidden;
         font-size: 6vw;
         text-transform: uppercase;
@@ -207,6 +206,14 @@
 
         @media screen and (max-width:600px) {
             font-size: 9vw;
+        }
+
+        span:first-child {
+            padding-right: 5px;
+        }
+
+        span:last-child {
+            padding-left: 5px;
         }
     }
 }

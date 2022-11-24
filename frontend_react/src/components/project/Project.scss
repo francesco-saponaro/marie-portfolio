@@ -259,14 +259,14 @@
             align-items: center;
             margin-bottom: 1vw;
 
-            @media screen and (max-width:740px) {
+            @media screen and (max-width:500px) {
                 margin-bottom: 20px;
             }
 
             &__title, &__text {
                 margin-bottom: 1vw;
 
-                @media screen and (max-width:740px) {
+                @media screen and (max-width:500px) {
                     margin-bottom: 20px;
                 }
             }
@@ -319,6 +319,10 @@
             .img {
                 margin-bottom: 8px;
                 width: 100%;
+
+                @media screen and (max-width:740px) {
+                    margin-bottom: 20px;
+                }
 
                 img {
                     width: 100%;
